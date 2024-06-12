@@ -34,6 +34,7 @@ ggplot(data = samples, aes(x = log_fc, y = minuslogp, color = Expression)) +
   theme(axis.title = element_text(size = 16, color = "black"),
         axis.text = element_text(size = 14, color = "black"),
         legend.position = "none") +
-  geom_text_repel(data = filter(samples, Label=="L"), aes(label = Features), color = "black", force = 1, force_pull = 5, nudge_y = 0.6) #Labels features with "L" in label column., The last 3 parameters can be changed if the labels are not to the user's desires.
+  if ("Label" %in% names(samples)){
+  geom_text_repel(data = filter(samples, Label=="L"), aes(label = Features), color = "black", force = 1, force_pull = 5, nudge_y = 0.6)} #Labels features with "L" in label column., The last 3 parameters can be changed if the labels are not to the user's desires.
   
 dev.off()
